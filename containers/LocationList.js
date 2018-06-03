@@ -6,7 +6,8 @@ import {
   View,
   StatusBar,
   Platform,
-  Alert
+  Alert,
+  Button
 } from 'react-native';
 import Fuse from 'fuse.js'
 import { createStackNavigator } from 'react-navigation';
@@ -90,12 +91,20 @@ const defaultLocations = [
 
 export default class LocatonList extends React.Component {
 
-  static navigationOptions = {
-    title: 'Locations',
-    headerStyle: {
-      backgroundColor: '#7FD8CA',
-    },
-    headerTintColor: '#2e504b'
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Locations',
+      headerStyle: {
+        backgroundColor: '#7FD8CA',
+      },
+      headerTintColor: '#2e504b',
+      headerLeft: (
+        <Button
+          onPress={() => navigation.toggleDrawer()}
+          title="Menu"
+        />
+      )
+    }
   }
 
   constructor(props) {
